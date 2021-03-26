@@ -550,6 +550,8 @@ func (l *log) Watch(ctx context.Context, ch chan<- *Event, opts ...WatchOption) 
 		return err
 	}
 
+	fmt.Printf("GO_CLIENT:STREAM_OBJECT %s\n", stream)
+
 	go func() {
 		defer close(ch)
 		for event := range stream {

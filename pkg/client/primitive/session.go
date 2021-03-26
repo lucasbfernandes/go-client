@@ -16,6 +16,7 @@ package primitive
 
 import (
 	"context"
+	"fmt"
 	"github.com/atomix/api/proto/atomix/headers"
 	primitiveapi "github.com/atomix/api/proto/atomix/primitive"
 	api "github.com/atomix/api/proto/atomix/session"
@@ -438,6 +439,7 @@ func (s *Session) doCommandStream(
 	// This will ensure that the server is notified the stream has been closed on the next keep-alive.
 	go func() {
 		<-ctx.Done()
+		fmt.Printf("GO_CLIENT:DO_COMMAND_STREAM_CLOSE_STREAM_CHANNEL\n")
 		stream.Close()
 	}()
 
@@ -465,6 +467,7 @@ func (s *Session) commandStream(
 	for {
 		responseHeader, response, err := responseFunc(responses)
 		if err != nil {
+			fmt.Printf("GO_CLIENT:RESPONSE_FUNC_ERROR_CLOSE_STREAM %s\n", err)
 			close(responseCh)
 			stream.Close()
 			return
@@ -472,16 +475,19 @@ func (s *Session) commandStream(
 
 		switch responseHeader.Type {
 		case headers.ResponseType_OPEN_STREAM:
+			fmt.Printf("GO_CLIENT:OPEN_STREAM\n")
 			if stream.serialize(responseHeader) && handshakeCh != nil {
 				close(handshakeCh)
 			}
 		case headers.ResponseType_CLOSE_STREAM:
+			fmt.Printf("GO_CLIENT:CLOSE_STREAM\n")
 			if stream.serialize(responseHeader) {
 				close(responseCh)
 				stream.Close()
 				return
 			}
 		case headers.ResponseType_RESPONSE:
+			fmt.Printf("GO_CLIENT:RESPONSE %s\n", responseHeader)
 			switch responseHeader.Status {
 			case headers.ResponseStatus_OK:
 				// Record the response

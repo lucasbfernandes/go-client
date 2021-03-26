@@ -12,3 +12,5 @@
 *.out
 build/_output
 *coverprofile
+
+.idea

@@ -528,6 +528,7 @@ func (l *log) Watch(ctx context.Context, ch chan<- *Event, opts ...WatchOption) 
 		request := &api.EventRequest{
 			Header: header,
 		}
+		fmt.Printf("GO_CLIENT:BEFORE_EVENT_REQUEST %s\n", request)
 		for _, opt := range opts {
 			opt.beforeWatch(request)
 		}
@@ -537,6 +538,9 @@ func (l *log) Watch(ctx context.Context, ch chan<- *Event, opts ...WatchOption) 
 		if err != nil {
 			return nil, nil, err
 		}
+
+		fmt.Printf("GO_CLIENT:AFTER_WATCH_ESPONSE %s\n", response)
+
 		for _, opt := range opts {
 			opt.afterWatch(response)
 		}
@@ -550,6 +554,8 @@ func (l *log) Watch(ctx context.Context, ch chan<- *Event, opts ...WatchOption) 
 		defer close(ch)
 		for event := range stream {
 			response := event.(*api.EventResponse)
+
+			fmt.Printf("GO_CLIENT:EVENT_STREAM_LOOP_RESPONSE %s\n", response)
 
 			// If this is a normal event (not a handshake response), write the event to the watch channel
 			var t EventType
@@ -569,7 +575,13 @@ func (l *log) Watch(ctx context.Context, ch chan<- *Event, opts ...WatchOption) 
 					Timestamp: response.Timestamp,
 				},
 			}
+			fmt.Printf("GO_CLIENT:SENT_EVENT %s\n", &Entry{
+				Index:     Index(response.Index),
+				Value:     response.Value,
+				Timestamp: response.Timestamp,
+			})
 		}
+		fmt.Printf("GO_CLIENT:FINISH_STREAM_LOOP\n")
 	}()
 	return nil
 }

@@ -435,6 +435,8 @@ func (s *Session) doCommandStream(
 		return nil, err
 	}
 
+	fmt.Printf("GO_CLIENT:STREAM_HEADER_OBJECT %s\n", stream)
+
 	// Create a goroutine to close the stream when the context is canceled.
 	// This will ensure that the server is notified the stream has been closed on the next keep-alive.
 	go func() {

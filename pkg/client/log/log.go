@@ -536,6 +536,7 @@ func (l *log) Watch(ctx context.Context, ch chan<- *Event, opts ...WatchOption) 
 	}, func(responses interface{}) (*headers.ResponseHeader, interface{}, error) {
 		response, err := responses.(api.LogService_EventsClient).Recv()
 		if err != nil {
+			fmt.Printf("GO_CLIENT_AFTER_WATCH_RECV_ERROR %s\n", err)
 			return nil, nil, err
 		}
 

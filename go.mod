@@ -1,4 +1,4 @@
-module github.com/atomix/go-client
+module github.com/lucasbfernandes/go-client
 
 go 1.13
 

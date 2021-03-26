@@ -17,7 +17,7 @@ package primitive
 import (
 	"context"
 	"fmt"
-	"github.com/atomix/go-client/pkg/client/util/net"
+	"github.com/lucasbfernandes/go-client/pkg/client/util/net"
 )
 
 // Type is the type of a primitive

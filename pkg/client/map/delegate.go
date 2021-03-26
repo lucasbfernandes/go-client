@@ -16,7 +16,7 @@ package _map //nolint:golint
 
 import (
 	"context"
-	"github.com/atomix/go-client/pkg/client/primitive"
+	"github.com/lucasbfernandes/go-client/pkg/client/primitive"
 )
 
 // newDelegatingMap returns a Map that delegates all method calls to the given Map

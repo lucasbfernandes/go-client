@@ -16,11 +16,11 @@ package log
 
 import (
 	"context"
-	"github.com/atomix/go-client/pkg/client/errors"
+	"github.com/lucasbfernandes/go-client/pkg/client/errors"
 	"testing"
 
-	"github.com/atomix/go-client/pkg/client/primitive"
-	"github.com/atomix/go-client/pkg/client/test"
+	"github.com/lucasbfernandes/go-client/pkg/client/primitive"
+	"github.com/lucasbfernandes/go-client/pkg/client/test"
 	"github.com/stretchr/testify/assert"
 )
 

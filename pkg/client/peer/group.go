@@ -19,7 +19,7 @@ import (
 	"errors"
 	"fmt"
 	membershipapi "github.com/atomix/api/proto/atomix/membership"
-	"github.com/atomix/go-client/pkg/client/util"
+	"github.com/lucasbfernandes/go-client/pkg/client/util"
 	"google.golang.org/grpc"
 	"io"
 	"sync"

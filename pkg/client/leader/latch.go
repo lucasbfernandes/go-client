@@ -19,8 +19,8 @@ import (
 	"errors"
 	"github.com/atomix/api/proto/atomix/headers"
 	api "github.com/atomix/api/proto/atomix/leader"
-	"github.com/atomix/go-client/pkg/client/primitive"
-	"github.com/atomix/go-client/pkg/client/util"
+	"github.com/lucasbfernandes/go-client/pkg/client/primitive"
+	"github.com/lucasbfernandes/go-client/pkg/client/util"
 	"github.com/google/uuid"
 	"google.golang.org/grpc"
 )

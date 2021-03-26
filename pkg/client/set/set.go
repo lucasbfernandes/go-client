@@ -16,8 +16,8 @@ package set
 
 import (
 	"context"
-	"github.com/atomix/go-client/pkg/client/primitive"
-	"github.com/atomix/go-client/pkg/client/util"
+	"github.com/lucasbfernandes/go-client/pkg/client/primitive"
+	"github.com/lucasbfernandes/go-client/pkg/client/util"
 	"sync"
 )
 

@@ -15,7 +15,7 @@
 package client
 
 import (
-	"github.com/atomix/go-client/pkg/client/peer"
+	"github.com/lucasbfernandes/go-client/pkg/client/peer"
 	"google.golang.org/grpc"
 	"os"
 	"time"

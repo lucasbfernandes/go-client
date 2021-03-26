@@ -17,8 +17,8 @@ package _map //nolint:golint
 import (
 	"context"
 	"fmt"
-	"github.com/atomix/go-client/pkg/client/primitive"
-	"github.com/atomix/go-client/pkg/client/util"
+	"github.com/lucasbfernandes/go-client/pkg/client/primitive"
+	"github.com/lucasbfernandes/go-client/pkg/client/util"
 	"math"
 	"sync"
 	"time"

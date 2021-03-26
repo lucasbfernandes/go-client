@@ -17,8 +17,8 @@ package test
 import (
 	"context"
 	"fmt"
-	"github.com/atomix/go-client/pkg/client/primitive"
-	netutil "github.com/atomix/go-client/pkg/client/util/net"
+	"github.com/lucasbfernandes/go-client/pkg/client/primitive"
+	netutil "github.com/lucasbfernandes/go-client/pkg/client/util/net"
 	"github.com/atomix/go-framework/pkg/atomix/counter"
 	"github.com/atomix/go-framework/pkg/atomix/election"
 	"github.com/atomix/go-framework/pkg/atomix/indexedmap"

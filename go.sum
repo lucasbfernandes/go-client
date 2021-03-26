@@ -2,6 +2,8 @@ cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMT
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/atomix/api v0.3.3 h1:7iTCHxeTrnkZ5C0S6XTXkBCYjUW4KbTjDd3X4pxD3Us=
 github.com/atomix/api v0.3.3/go.mod h1:G8fCdKYiPhZMYTgfz7QAtw6JqIfY2szigiz/gILNY50=
+github.com/lucasbfernandes/go-client v0.4.1 h1:xyeGBMKI5uVqXNEIGxiOEcsANxac/gnwllxgACCQ7Ck=
+github.com/lucasbfernandes/go-client v0.4.1/go.mod h1:HGh43tCDIFmmyir3oNPCW4+sUsUfnmm10uUfHl81CJs=
 github.com/atomix/go-framework v0.5.1 h1:gRpwnNWWaccBr9f9E2MgNFEv/GqaXbv6QR6fQjEfcZI=
 github.com/atomix/go-framework v0.5.1/go.mod h1:5IGQzFZ+nixj7VmmiX+ntQCWXJ2ShT+0Un2BgWKL+mA=
 github.com/atomix/go-local v0.5.1 h1:QhkM4O9pkiC/kh/RBnXG5iM7qsiJTB2N5Cyz7nOgIxc=

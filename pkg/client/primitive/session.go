@@ -473,6 +473,9 @@ func (s *Session) commandStream(
 			return
 		}
 
+		fmt.Printf("GO_CLIENT_RESPONSE_HEADER %s\n", responseHeader)
+		fmt.Printf("GO_CLIENT_RESPONSE %s\n", response)
+
 		switch responseHeader.Type {
 		case headers.ResponseType_OPEN_STREAM:
 			fmt.Printf("GO_CLIENT:OPEN_STREAM\n")

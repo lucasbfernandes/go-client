@@ -183,7 +183,10 @@ func (l *log) Append(ctx context.Context, value []byte) (*Entry, error) {
 	}
 
 	response := r.(*api.AppendResponse)
-	fmt.Printf("GO_CLIENT:APPEND_RESPONSE %s\n", json.Marshal(response))
+
+	responseObject, _ := json.Marshal(response)
+
+	fmt.Printf("GO_CLIENT:APPEND_RESPONSE %s\n", responseObject)
 	fmt.Printf("GO_CLIENT:APPEND_STATUS %s\n", response.Status)
 	if response.Status == api.ResponseStatus_OK {
 		return &Entry{
@@ -531,7 +534,8 @@ func (l *log) Watch(ctx context.Context, ch chan<- *Event, opts ...WatchOption) 
 		request := &api.EventRequest{
 			Header: header,
 		}
-		fmt.Printf("GO_CLIENT:BEFORE_EVENT_REQUEST %s\n", json.Marshal(request))
+		requestObject, _ := json.Marshal(request)
+		fmt.Printf("GO_CLIENT:BEFORE_EVENT_REQUEST %s\n", requestObject)
 		fmt.Printf("GO_CLIENT:STREAM_REQUEST_ID %s\n", request.Header.RequestID)
 		for _, opt := range opts {
 			opt.beforeWatch(request)

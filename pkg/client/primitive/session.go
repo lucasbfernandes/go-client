@@ -25,6 +25,7 @@ import (
 	"github.com/google/uuid"
 	"google.golang.org/grpc"
 	"math"
+	"math/rand"
 	"sync"
 	"time"
 )
@@ -232,7 +233,7 @@ func (s *Session) getQueryHeader(primitive primitiveapi.PrimitiveId) *headers.Re
 func (s *Session) nextCommandHeader(primitive primitiveapi.PrimitiveId) *headers.RequestHeader {
 	s.mu.Lock()
 	defer s.mu.Unlock()
-	s.requestID = s.requestID + 1
+	s.requestID = rand.Uint64() // s.requestID + 1
 	header := &headers.RequestHeader{
 		Primitive: primitive,
 		Partition: uint32(s.Partition),
@@ -247,7 +248,7 @@ func (s *Session) nextCommandHeader(primitive primitiveapi.PrimitiveId) *headers
 func (s *Session) nextStreamHeader(primitive primitiveapi.PrimitiveId) (*Stream, *headers.RequestHeader) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
-	s.requestID = s.requestID + 1
+	s.requestID = rand.Uint64() // s.requestID + 1
 	stream := &Stream{
 		ID:      s.requestID,
 		session: s,

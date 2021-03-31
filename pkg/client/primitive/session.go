@@ -20,12 +20,11 @@ import (
 	"github.com/atomix/api/proto/atomix/headers"
 	primitiveapi "github.com/atomix/api/proto/atomix/primitive"
 	api "github.com/atomix/api/proto/atomix/session"
+	"github.com/google/uuid"
 	"github.com/lucasbfernandes/go-client/pkg/client/errors"
 	"github.com/lucasbfernandes/go-client/pkg/client/util/net"
-	"github.com/google/uuid"
 	"google.golang.org/grpc"
 	"math"
-	"math/rand"
 	"sync"
 	"time"
 )
@@ -233,7 +232,7 @@ func (s *Session) getQueryHeader(primitive primitiveapi.PrimitiveId) *headers.Re
 func (s *Session) nextCommandHeader(primitive primitiveapi.PrimitiveId) *headers.RequestHeader {
 	s.mu.Lock()
 	defer s.mu.Unlock()
-	s.requestID = rand.Uint64() // s.requestID + 1
+	s.requestID = s.requestID + 1
 	header := &headers.RequestHeader{
 		Primitive: primitive,
 		Partition: uint32(s.Partition),
@@ -248,7 +247,7 @@ func (s *Session) nextCommandHeader(primitive primitiveapi.PrimitiveId) *headers
 func (s *Session) nextStreamHeader(primitive primitiveapi.PrimitiveId) (*Stream, *headers.RequestHeader) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
-	s.requestID = rand.Uint64() // s.requestID + 1
+	s.requestID = s.requestID + 1
 	stream := &Stream{
 		ID:      s.requestID,
 		session: s,
